@@ -143,6 +143,7 @@
     </dependencyManagement>
 
     <build>
+        <finalName>microservice-${artifactId}-${version}</finalName>
         <pluginManagement>
             <plugins>
                 <!--校验开发环境-->
@@ -189,15 +190,6 @@
                         <source>${java.version}</source>
                         <target>${java.version}</target>
                         <encoding>${project.build.sourceEncoding}</encoding>
-                        <!--<annotationProcessors>
-                         <annotationProcessor>io.vertx.codegen.CodeGenProcessor</annotationProcessor>
-                     </annotationProcessors>
-                     <generatedSourcesDirectory>
-                         ${project.basedir}/src/main/generated
-                     </generatedSourcesDirectory>
-                     <compilerArgs>
-                         <arg>-AoutputDirectory=${project.basedir}/src/main</arg>
-                     </compilerArgs>-->
                     </configuration>
                 </plugin>
 
@@ -208,20 +200,6 @@
                     <configuration>
                         <argLine>-noverify</argLine>
                     </configuration>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>cobertura-maven-plugin</artifactId>
-                    <version>2.7</version>
-                    <!--<executions>
-                        <execution>
-                            <phase>test</phase>
-                            <goals>
-                                <goal>cobertura</goal>
-                            </goals>
-                        </execution>
-                    </executions>-->
                 </plugin>
 
                 <plugin>
@@ -243,51 +221,19 @@
                     <version>2.1</version>
                     <executions>
                         <execution>
-                            <id>copy</id>
-                            <phase>prepare-package</phase>
-                            <goals>
-                                <goal>copy</goal>
-                            </goals>
-                           <configuration>
-                               <outputDirectory>${project.build.directory}/ext</outputDirectory>
-                               <artifactItems>
-                                   <artifactItem>
-                                       <groupId>io.vertx</groupId>
-                                       <artifactId>vertx-hazelcast</artifactId>
-                                       <version>${vertx.version}</version>
-                                   </artifactItem>
-                                   <artifactItem>
-                                       <groupId>com.hazelcast</groupId>
-                                       <artifactId>hazelcast</artifactId>
-                                       <version>${hazelcast.version}</version>
-                                   </artifactItem>
-                                   <artifactItem>
-                                       <groupId>ch.qos.logback</groupId>
-                                       <artifactId>logback-classic</artifactId>
-                                       <version>${logback.version}</version>
-                                   </artifactItem>
-                                   <artifactItem>
-                                       <groupId>ch.qos.logback</groupId>
-                                       <artifactId>logback-core</artifactId>
-                                       <version>${logback.version}</version>
-                                   </artifactItem>
-                               </artifactItems>
-                           </configuration>
-                        </execution>
-                        <execution>
                             <id>copy-dependencies</id>
                             <phase>prepare-package</phase>
                             <goals>
                                 <goal>copy-dependencies</goal>
                             </goals>
-                            <configuration>
-                                <includeScope>runtime</includeScope>
-                                <includeTypes>jar</includeTypes>
-                                <overWriteSnapshots>true</overWriteSnapshots>
-                                <outputDirectory>${project.build.directory}/lib</outputDirectory>
-                            </configuration>
                         </execution>
                     </executions>
+                    <configuration>
+                        <includeScope>runtime</includeScope>
+                        <includeTypes>jar</includeTypes>
+                        <overWriteSnapshots>true</overWriteSnapshots>
+                        <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                    </configuration>
                 </plugin>
 
                 <plugin>
