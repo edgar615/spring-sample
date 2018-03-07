@@ -1,0 +1,63 @@
+server:
+    port: 9000
+
+spring:
+    application:
+        name: helloworld
+    jackson:
+        default-property-inclusion: non_null
+        #serialization-inclusion: non_null 升级后不起作用
+    mvc:
+        throw-exception-if-no-handler-found: true
+    resources:
+        add-mappings: true
+    datasource:
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/device
+          username : root
+          password: 123456
+          # hikari配置
+          type: com.zaxxer.hikari.HikariDataSource
+  #        poolName: test
+  #        idleTimeout: 10000 指定连接多久没被使用时，被设置为空闲，单位毫秒，默认为600000 (10 minutes)
+  #        maximumPoolSize: 5 #指定连接池最大的连接数，包括使用中的和空闲的连接.默认10
+          connectionTimeout: 60000 #连接的超时时间，毫秒
+  #        poolName: datasource #连接池名称
+  #        autoCommit: false #自动提交
+  #        minimumIdle: 0 #指定连接维护的最小空闲连接数，当使用HikariCP时指定.
+          dataSourceProperties: # hikari的属性
+  #            url: jdbc:mysql://test.ihorn.com.cn:3306/om_new
+  #            user: admin
+  #            password: csst
+  #            idleTimeout: 10000 #指定连接多久没被使用时，被设置为空闲，单位毫秒，默认为600000 (10 minutes)，最小值10000ms (10 seconds)
+  #            poolName: web2 #连接池名称
+              ## Only for mysql https://github.com/brettwooldridge/HikariCP/wiki/MySQL-Configuration
+                cachePrepStmts: true
+                prepStmtCacheSize: 250
+                prepStmtCacheSqlLimit: 2048
+                useServerPrepStmts: true
+                useLocalSessionState: true
+                useLocalTransactionState: true
+                rewriteBatchedStatements: true
+                cacheResultSetMetadata: true
+                cacheServerConfiguration: true
+                elideSetAutoCommits: true
+                maintainTimeStats: false
+
+log4jdbc: #jdbc日志配置
+    trim:
+        sql: true
+    sqltiming:
+        warn:
+            threshold: 1000
+        error:
+            threshold: 2000
+
+system:
+    name: helloworld
+    log: #开启日志
+        enabled: true
+        ignore: #忽略日志的路径
+            - /css
+            - /js
+            - /img

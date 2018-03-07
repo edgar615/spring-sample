@@ -1,0 +1,1 @@
+http://codecentric.github.io/spring-boot-admin/current

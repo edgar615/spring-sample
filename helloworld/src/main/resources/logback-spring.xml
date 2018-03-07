@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProperty scope="context" name="serviceName" source="spring.application.name"
+                    defaultValue="service"/>
+    <appender name="FILE"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>log/${serviceName}.%d{yyyy-MM-dd.HH}.log</fileNamePattern>
+
+            <!-- keep 15 days' worth of history -->
+            <maxHistory>15</maxHistory>
+        </rollingPolicy>
+        <!--%date %level [%thread] %logger{10} [%file:%line] %msg%n-->
+        <encoder>
+            <pattern>%date %level [%thread] [${serviceName},%X{x-request-id}] %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are by default assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36}  [${serviceName},%X{x-request-id}] %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!--
+    jdbc.sqlonly 	Logs only SQL. SQL executed within a prepared statement is automatically shown with it's bind arguments replaced with the data bound at that position, for greatly increased readability.
+    jdbc.sqltiming 	Logs the SQL, post-execution, including timing statistics on how long the SQL took to execute.
+    jdbc.audit 	Logs ALL JDBC calls except for ResultSets. This is a very voluminous output, and is not normally needed unless tracking down a specific JDBC problem.
+    jdbc.resultset 	Even more voluminous, because all calls to ResultSet objects are logged.
+    jdbc.resultsettable 	Log the jdbc results as a table. Level debug will fill in unread values in the result set.
+    jdbc.connection 	Logs connection open and close events as well as dumping all open connection numbers. This is very useful for hunting down connection leak problems.
+    -->
+    <logger name="jdbc" additivity="false">
+        <level value="INFO" />
+        <!--<appender-ref ref="FILE" />-->
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="jdbc.resultset" additivity="false">
+        <level value="ERROR" />
+        <!--<appender-ref ref="FILE" />-->
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="jdbc.audit" additivity="false">
+        <level value="ERROR" />
+        <!--<appender-ref ref="FILE" />-->
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="jdbc.resultsettable" additivity="false">
+        <level value="ERROR" />
+        <!--<appender-ref ref="FILE" />-->
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <!--<logger name="com.edgar" level="DEBUG"/>-->
+  <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <!--<appender-ref ref="FILE"/>-->
+    </root>
+</configuration>
