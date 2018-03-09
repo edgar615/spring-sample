@@ -1,5 +1,8 @@
 server:
     port: 9000
+    error:
+        whitelabel:
+            enabled: false
 
 spring:
     application:
@@ -13,7 +16,7 @@ spring:
         add-mappings: true
     datasource:
           driver-class-name: com.mysql.jdbc.Driver
-          url: jdbc:mysql://localhost:3306/device
+          url: jdbc:mysql://localhost:3306/device?verifyServerCertificate=false&useSSL=true&requireSSL=true
           username : root
           password: 123456
           # hikari配置
