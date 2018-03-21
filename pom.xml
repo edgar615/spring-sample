@@ -18,6 +18,7 @@
         <module>spring-admin</module>
         <module>helloworld</module>
         <module>feign</module>
+        <module>consul</module>
     </modules>
 
     <properties>
