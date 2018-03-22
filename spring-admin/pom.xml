@@ -18,7 +18,6 @@
         <java.version>1.8</java.version>
         <java.encoding>UTF-8</java.encoding>
         <project.build.sourceEncoding>${java.encoding}</project.build.sourceEncoding>
-        <spring.admin.version>1.5.7</spring.admin.version>
     </properties>
 
 
@@ -28,6 +27,13 @@
             <artifactId>spring-boot-admin-starter-server</artifactId>
             <version>${spring.admin.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+        </dependency>
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>

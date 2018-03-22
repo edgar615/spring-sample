@@ -47,6 +47,12 @@ spring:
                 elideSetAutoCommits: true
                 maintainTimeStats: false
 
+management:
+    endpoints:
+        web:
+            exposure:
+                include: '*'
+
 log4jdbc: #jdbc日志配置
     trim:
         sql: true
