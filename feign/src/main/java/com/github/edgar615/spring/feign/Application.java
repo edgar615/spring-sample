@@ -1,11 +1,10 @@
-package com.github.edgar615.spring.consul;
+package com.github.edgar615.spring.feign;
 
-import com.google.common.collect.ImmutableMap;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,25 +12,29 @@ import java.util.Map;
 
 @SpringBootApplication(scanBasePackages = {"com.github.edgar615.**"})
 @RestController
+@EnableFeignClients
+@EnableDiscoveryClient
 public class Application {
 
-    @Value("${server.port}")
-    private int port;
+    @Autowired
+    private StoreClient storeClient;
+
+    @Autowired
+    private HystrixClient hystrixClient;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
 
     @RequestMapping("/")
-    public String home() {
-        return "Hello world";
+    public Map<String, Object> home() {
+        return storeClient.getStores();
     }
 
-    @RequestMapping("/stores")
-    public Map<String, Object> stores() {
-        return ImmutableMap.of("foo", port);
-    }
-
+  @RequestMapping("/hystrix")
+  public Map<String, Object> hystrix() {
+    return hystrixClient.getStores();
+  }
 
 //  @Bean
 //  MeterRegistryCustomizer<MeterRegistry> metricsCommonTags() {

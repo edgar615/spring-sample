@@ -1,15 +1,22 @@
 server:
-    port: 9002
+    port: 9001
 
 spring:
     application:
-        name: consul-sample
+        name: feign-sample
     cloud:
         consul:
             host: localhost
             port: 8500
             discovery:
-                tags: foo=bar, baz
                 healthCheckPath: /health
                 healthCheckInterval: 15s
-                instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+
+feign:
+      hystrix:
+          enabled: true
+
+management:
+    endpoints:
+        web:
+            base-path: /manage
