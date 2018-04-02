@@ -23,6 +23,7 @@
         <module>health</module>
         <module>admin-client</module>
         <module>hystrix</module>
+        <module>fileuploads</module>
     </modules>
 
     <repositories>
