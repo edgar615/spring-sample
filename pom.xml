@@ -45,6 +45,7 @@
         
         <junit.version>4.12</junit.version>
 		<spring.cloud.version>Finchley.M9</spring.cloud.version>
+        <cloud.start.version>1.4.3.RELEASE</cloud.start.version>
         <!--Edgware.SR2 Finchley.M9-->
         <org.aspectj.version>1.7.2</org.aspectj.version>
         <aspectjweaver.version>1.8.6</aspectjweaver.version>
@@ -76,6 +77,28 @@
                 <version>${spring.cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-feign</artifactId>
+                <version>${cloud.start.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-hystrix</artifactId>
+                <version>${cloud.start.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+                <version>${cloud.start.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+                <version>${cloud.start.version}</version>
             </dependency>
 
             <dependency>
