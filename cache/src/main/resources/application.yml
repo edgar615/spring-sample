@@ -1,0 +1,12 @@
+server:
+  port: 8888
+
+
+spring:
+  application:
+    name: cache
+
+cache:
+    enabled: true
+    spec:
+        - name=testCache,type=caffeine,maximumSize=5000,expireAfterWrite=24h

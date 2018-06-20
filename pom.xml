@@ -24,6 +24,7 @@
         <module>admin-client</module>
         <module>hystrix</module>
         <module>fileuploads</module>
+        <module>cache</module>
     </modules>
 
     <repositories>
