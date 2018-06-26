@@ -25,6 +25,7 @@
         <module>hystrix</module>
         <module>fileuploads</module>
         <module>cache</module>
+        <module>enable</module>
     </modules>
 
     <repositories>
