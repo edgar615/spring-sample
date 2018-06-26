@@ -701,6 +701,11 @@ public class Device implements Persistent<Integer> {
         return map;
     }
 
+    @Override
+    public void fromMap(Map<String, Object> map) {
+
+    }
+
    /* START Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
 	/* END Do not remove/edit this line. CodeGenerator will preserve any code between start and end tags.*/
 

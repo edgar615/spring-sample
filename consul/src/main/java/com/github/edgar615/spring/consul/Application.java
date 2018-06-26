@@ -1,6 +1,5 @@
 package com.github.edgar615.spring.consul;
 
-import com.google.common.collect.ImmutableMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -9,7 +8,9 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @SpringBootApplication(scanBasePackages = {"com.github.edgar615.**"})
 @RestController
@@ -29,7 +30,9 @@ public class Application {
 
     @RequestMapping("/stores")
     public Map<String, Object> stores() {
-        return ImmutableMap.of("foo", port);
+        Map<String, Object> map = new HashMap<>();
+        map.put("foo", port);
+        return map;
     }
 
 

@@ -14,9 +14,8 @@ public class DatabaseCodeGen {
             .addGenTable("device")
             .setIgnoreColumnsStr("created_on,updated_on")
             .setGenRule(true)
-            .setJdbcUrl(
-                    "jdbc:mysql://test.ihorn.com.cn:3306/device"
-                    + "?verifyServerCertificate=false&useSSL=true&requireSSL=true")
+            .setJdbcArg("verifyServerCertificate=false&useSSL=true&requireSSL=true")
+            .setHost("test.ihorn.com.cn")
             .setSrcFolderPath("helloworld/src/main/java")
             .setDomainPackage("com.github.edgar615.spring.helloworld.domain");
 

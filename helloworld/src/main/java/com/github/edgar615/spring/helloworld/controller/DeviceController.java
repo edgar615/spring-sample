@@ -8,7 +8,6 @@ import com.github.edgar615.util.db.Pagination;
 import com.github.edgar615.util.exception.DefaultErrorCode;
 import com.github.edgar615.util.exception.SystemException;
 import com.github.edgar615.util.search.Example;
-import com.github.edgar615.util.spring.web.ResponseMessage;
 import com.github.edgar615.spring.helloworld.service.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,32 +39,32 @@ public class DeviceController {
 
   @RequestMapping(value = "/devices", method = RequestMethod.POST)
   @ResponseStatus(HttpStatus.CREATED)
-  public ModelAndView addDevice(@RequestBody Device device) {
+  public Integer addDevice(@RequestBody Device device) {
     deviceService.insert(device);
 //    jdbc.insertAndGeneratedKey(device);
     //insertAndGeneratedKey会将自动生成的主键赋值到device对象
     //jdbc.insert(device)不会讲主键赋值到device对象
-    return ResponseMessage.asModelAndView(device.getDeviceId());
+    return device.getDeviceId();
   }
 
   @RequestMapping(value = "/devices/{deviceId}", method = RequestMethod.PUT)
   @ResponseStatus(HttpStatus.ACCEPTED)
-  public ModelAndView modifyDevice(@PathVariable("deviceId") int deviceId,
+  public Integer modifyDevice(@PathVariable("deviceId") int deviceId,
                                    @RequestBody Device device) {
     int result = jdbc.updateById(device, deviceId);
     //updateById根据主键更新
     // updateByCriteria根据条件更新
-    return ResponseMessage.asModelAndView(result);
+    return result;
   }
 
 
   @RequestMapping(value = "/devices/{deviceId}", method = RequestMethod.DELETE)
   @ResponseStatus(HttpStatus.ACCEPTED)
-  public ModelAndView deleteDevice(@PathVariable("deviceId") int deviceId) {
+  public Integer deleteDevice(@PathVariable("deviceId") int deviceId) {
     int result = jdbc.deleteById(Device.class, deviceId);
     //deleteById根据主键删除
     //deleteByCriteria根据条件删除
-    return ResponseMessage.asModelAndView(result);
+    return result;
   }
 
   @RequestMapping(value = "/devices/{deviceId}", method = RequestMethod.GET)
@@ -134,15 +133,15 @@ public class DeviceController {
   }
 
   @RequestMapping(value = "/devices/checkmac", method = RequestMethod.GET)
-  public ModelAndView checkMac(
+  public Integer checkMac(
           @RequestParam(value = "macAddress", required = true) String macAddress) {
     Example example = Example.create()
             .equalsTo("macAddress", macAddress);
-    int count = jdbc.countByCriteria(Device.class, example);
+    int count = jdbc.countByExample(Device.class, example);
     if (count > 0) {
       throw SystemException.create(DefaultErrorCode.ALREADY_EXISTS);
     }
 
-    return ResponseMessage.asModelAndView(1);
+    return 1;
   }
 }
