@@ -26,6 +26,7 @@
         <module>fileuploads</module>
         <module>cache</module>
         <module>enable</module>
+        <module>api-prefix</module>
     </modules>
 
     <repositories>
