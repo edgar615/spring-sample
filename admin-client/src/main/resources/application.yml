@@ -4,8 +4,8 @@ server:
 spring:
     cloud:
         consul:
-        host: localhost
-        port: 8500
+            host: localhost
+            port: 8500
     application:
         name: @project.artifactId@
 
@@ -24,7 +24,14 @@ management:
     endpoint:
           health:
             show-details: "ALWAYS"
+          beans:
+                enabled: true
+          prometheus:
+                enabled: true
+          shutdown:
+                enabled: true
     endpoints:
         web:
             exposure:
                 include: '*'
+            base-path: /manage

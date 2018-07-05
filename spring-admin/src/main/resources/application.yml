@@ -4,8 +4,8 @@ server:
 spring:
     cloud:
         consul:
-        host: localhost
-        port: 8500
+            host: localhost
+            port: 8500
     application:
         name: admin
     jackson:
