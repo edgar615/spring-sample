@@ -27,6 +27,7 @@
         <module>cache</module>
         <module>enable</module>
         <module>api-prefix</module>
+        <module>spring-redis</module>
     </modules>
 
     <repositories>

@@ -843,3 +843,15 @@ public class InfoWebEndpointExtension {
     }
 }
 ```
+
+内置 HealthIndicator 监控检测
+CassandraHealthIndicator 	Checks that a Cassandra database is up.
+DiskSpaceHealthIndicator 	Checks for low disk space.
+DataSourceHealthIndicator 	Checks that a connection to DataSource can be obtained.
+ElasticsearchHealthIndicator 	Checks that an Elasticsearch cluster is up.
+JmsHealthIndicator 	Checks that a JMS broker is up.
+MailHealthIndicator 	Checks that a mail server is up.
+MongoHealthIndicator 	Checks that a Mongo database is up.
+RabbitHealthIndicator 	Checks that a Rabbit server is up.
+RedisHealthIndicator 	Checks that a Redis server is up.
+SolrHealthIndicator 	Checks that a Solr server is up.
