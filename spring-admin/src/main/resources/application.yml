@@ -2,11 +2,22 @@ server:
     port: 8088
 
 spring:
-    cloud:
-        consul:
-            host: localhost
-            port: 8500
+#    cloud:
+#        consul:
+#            host: localhost
+#            port: 8500
     application:
         name: admin
     jackson:
         serialization-inclusion: non_null
+    mail:
+        host: smtp.xxxxx.com
+        username: xxx@xxxx.com
+        password: xxxx
+    boot:
+        admin:
+            notify:
+                mail:
+                    enabled: true
+                    ignore-changes: "UNKNOWN:UP"
+                    to: xxx@xxxx.com
