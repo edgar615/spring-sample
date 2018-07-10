@@ -33,3 +33,7 @@ management:
             exposure:
                 include: '*'
             base-path: /manage
+    metrics:
+        web:
+            server:
+                auto-time-requests: false #对所有的请求做Timer，默认为false
