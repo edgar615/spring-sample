@@ -1,0 +1,15 @@
+server:
+    port: 9000
+
+spring:
+    mail:
+        host: smtp.xxxx.com
+        username: xxxx@xxxx.com
+        password: xxxxxx
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    starttls:
+                        enable: true
+                        requied: true

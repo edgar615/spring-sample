@@ -28,6 +28,7 @@
         <module>enable</module>
         <module>api-prefix</module>
         <module>spring-redis</module>
+        <module>mail</module>
     </modules>
 
     <repositories>
