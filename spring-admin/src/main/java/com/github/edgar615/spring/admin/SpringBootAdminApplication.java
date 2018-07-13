@@ -32,6 +32,11 @@ public class SpringBootAdminApplication {
         return new LoggingNotifier(repository);
     }
 
+    @Bean
+    public CustomNotifier customNotifier(InstanceRepository repository) {
+        return new CustomNotifier(repository);
+    }
+
     // tag::configuration-filtering-notifier[]
     @Configuration
     public static class NotifierConfig {
