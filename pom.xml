@@ -28,6 +28,9 @@
         <module>enable</module>
         <module>api-prefix</module>
         <module>spring-redis</module>
+        <module>zipkin-server</module>
+        <module>zipkin-client1</module>
+        <module>zipkin-client2</module>
     </modules>
 
     <repositories>

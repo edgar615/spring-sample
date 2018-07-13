@@ -1,0 +1,29 @@
+server:
+    port: 9001
+
+spring:
+    zipkin:
+        base-url: http://localhost:9000
+    sleuth:
+        sampler:
+            percentage: 1.0 #是监控的百分比，默认的是0.1表示10%,这里给1.0表示全部监控，越高会越影响性能
+
+info:
+    name: @project.artifactId@
+    build:
+        artifact:   @project.artifactId@
+        name: @project.artifactId@
+        version: @project.version@
+        description: 这是一个测试用例
+
+feign:
+      hystrix:
+          enabled: true
+
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 5000

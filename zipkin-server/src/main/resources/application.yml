@@ -1,0 +1,20 @@
+server:
+    port: 9000
+
+spring:
+    application:
+        name: @project.artifactId@
+
+info:
+    name: @project.artifactId@
+    build:
+        artifact:   @project.artifactId@
+        name: @project.artifactId@
+        version: @project.version@
+        description: 这是一个测试用例
+
+management:
+    metrics:
+        web:
+            server:
+                auto-time-requests: false #对所有的请求做Timer，默认为false
