@@ -1,0 +1,46 @@
+server:
+    port: 9000
+
+spring:
+    application:
+        name: stream-kafka
+
+info:
+    name: @project.artifactId@
+    build:
+        artifact:   @project.artifactId@
+        name: @project.artifactId@
+        version: @project.version@
+        description: 这是一个测试用例
+
+spring:
+    cloud:
+        stream:
+            bindings:
+                input: #输入 Sink
+                    destination: test-topic-01
+                    group: s3
+                    consumer:
+                        concurrency: 1
+                        partitioned: false
+                output: #输入 Source
+                    destination: test-topic-01
+                    content-type: text/plain
+                    producer:
+                        partitionCount: 1
+                        partitionKeyExpression: payload.id
+            kafka:
+                binder:
+                    brokers: test.ihorn.com.cn:9092
+#                    zk-nodes: test.ihorn.com.cn:2182
+                    minPartitionCount: 1
+                    autoCreateTopics: true
+                    autoAddPartitions: true
+
+#如果需要连接多个kafka，需要使用下面的这种方式
+#spring.cloud.stream.bindings.<channelName>.binder=<binderName>
+#spring.cloud.stream.binders.<binderName>.type=kafka
+#spring.cloud.stream.binders.<binderName>.environment.spring.cloud.stream.kafka.binder.brokers=10.79.96.52:9092
+#spring.cloud.stream.binders.<binderName>.environment.spring.cloud.stream.kafka.binder.zk-nodes=10.79.96.52:2182
+
+#management.health.binders.enabled

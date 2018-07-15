@@ -1,0 +1,9 @@
+ 配置分区、分组信息
+
+具体配置上文有提到，不重复描述，额外提一下spring.cloud.stream.kafka.binder.autoAddPartitions这个配置默认是false，通常情况下会产生无法启动的问题，强烈建议配置成true。
+
+这里面的原理大致描述如下，比如你启动了一个生产者并配置producer.partitionCount=5，那么Stream底层是需要kafka提供5个kafka分区（注意Stream的5个分区 和 kafka的5个分区此时相等是巧合，请分开理解），如果kafka中如果没有目标topics，Stream会在启动的时候在kafka中创建5个分区，并成功启动，但是如果kafka中已经有了目标topics，并且目标topics不足5个分区，那么生产者启动失败。所以必须设置autoAddPartitions=true，生产者才能在启动的时候自动将kafka中的目标topics分区扩展成5个，方能启动成功。
+
+如果此刻生产者启动成功，你会启动消费者，如果消费者你规划了5个实例，每个实例支持2个并发（concurrency=2），那么每个Stream底层需要5*2=10个kafka分区（而此时kafka的目标topics只有5个分区），消费者也会启动失败，这种情况下需要将消费者的autoAddPartitions=true。
+
+    autoAddPartitions=true 有得也有失。得到的上文已经描述，这里再提一下失去的。 还拿上文举例，生产者启动了5个kafka分区，所以生产者实例只会往这5个分区中输出，这样就导致消费者扩展出来的另外5个分区收不到数据，所以要重启生产者，用以重新计算生产者与底层kafka分区的关系。 官方文档提到使用SpringCloudDataFlow可以显著的简化过程，我还没有尝试。

@@ -2,6 +2,15 @@ server:
     port: 9001
 
 spring:
+    application:
+        name: zipkin-client1
+    cloud:
+        consul:
+            host: localhost
+            port: 8500
+#            discovery:
+#                healthCheckPath: /health
+#                healthCheckInterval: 15s
     zipkin:
         base-url: http://localhost:9000
     sleuth:
@@ -18,7 +27,7 @@ info:
 
 feign:
       hystrix:
-          enabled: true
+          enabled: false
 
 hystrix:
     command:

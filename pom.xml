@@ -32,6 +32,7 @@
         <module>zipkin-client1</module>
         <module>zipkin-client2</module>
         <module>mail</module>
+        <module>stream-kafka</module>
     </modules>
 
     <repositories>
