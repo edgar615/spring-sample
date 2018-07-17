@@ -3,3 +3,25 @@ server:
 spring:
   application:
     name: spring-cloud-gateway
+    cloud:
+        consul:
+            host: localhost
+            port: 8500
+            discovery:
+                tags: foo=bar, baz
+                healthCheckPath: /manage/health
+                healthCheckInterval: 15s
+        gateway:
+            discovery:
+                locator:
+                    enabled: true
+            default-filters:
+            - AddResponseHeader=X-Response-Default-Foo, Default-Bar
+        routes:
+        - id: consul
+          uri: lb://consul-sample
+          order: 8000
+          predicates:
+          - Path=/consul/**
+          filters:
+          - StripPrefix=1
