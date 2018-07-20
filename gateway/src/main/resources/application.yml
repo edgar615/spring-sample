@@ -3,25 +3,33 @@ server:
 spring:
   application:
     name: spring-cloud-gateway
-    cloud:
-        consul:
-            host: localhost
-            port: 8500
-            discovery:
-                tags: foo=bar, baz
-                healthCheckPath: /manage/health
-                healthCheckInterval: 15s
-        gateway:
-            discovery:
-                locator:
-                    enabled: true
-            default-filters:
-            - AddResponseHeader=X-Response-Default-Foo, Default-Bar
-        routes:
-        - id: consul
-          uri: lb://consul-sample
-          order: 8000
-          predicates:
-          - Path=/consul/**
-          filters:
-          - StripPrefix=1
+  cloud:
+    consul:
+        host: localhost
+        port: 8500
+        discovery:
+            tags: foo=bar, baz
+            healthCheckPath: /manage/health
+            healthCheckInterval: 15s
+    gateway:
+      locator:
+        enabled: true
+      default-filters:
+      - AddResponseHeader=X-Response-Default-Foo, Default-Bar
+      routes:
+     # =====================================
+       - id: default_path_to_http
+         uri: http://localhost:9002
+         order: 10000
+         predicates:
+         - Path=/hello/**
+         filters:
+         - StripPrefix=1
+       - id: consul
+         uri: lb://zipkin-client2
+         order: 8000
+         predicates:
+         - Path=/consul/**
+         filters:
+         - AddResponseHeader=X-Response-proxy-consul, client
+         - StripPrefix=1

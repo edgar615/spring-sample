@@ -31,7 +31,7 @@ spring:
                         partitionKeyExpression: payload.id
             kafka:
                 binder:
-                    brokers: test.ihorn.com.cn:9092
+                    brokers: 120.76.158.7:9092
 #                    zk-nodes: test.ihorn.com.cn:2182
                     minPartitionCount: 1
                     autoCreateTopics: true
