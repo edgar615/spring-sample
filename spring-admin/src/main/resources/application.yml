@@ -27,5 +27,9 @@ spring:
                 mail:
                     enabled: true
                     ignore-changes: "UNKNOWN:UP"
+#                    ignore-changes: "*:UP"
+#                    ignore-changes:
+#                        - "UNKNOWN:UP"
+#                        - "OFFLINE:UP"
                     to: xxx@xxx.com
                     from: xxxx@xxxx.com
