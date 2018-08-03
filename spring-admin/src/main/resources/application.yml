@@ -21,6 +21,10 @@ spring:
                     starttls:
                         enable: true
                         requied: true
+#    security: #配了这个后client注册失败，一直没找到原因，猜测的client没有写入响应请求头
+#        user:
+#            name: user
+#            password: password
     boot:
         admin:
             notify:

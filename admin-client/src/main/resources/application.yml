@@ -12,7 +12,12 @@ spring:
         admin:
             client:
                 url: "http://localhost:8088"
-
+#                username: user
+#                password: password
+#                instance:
+#                    metadata:
+#                        user.name: user
+#                        user.password: password
 info:
     name: @project.artifactId@
     build:
