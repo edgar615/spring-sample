@@ -34,6 +34,8 @@
         <module>mail</module>
         <module>stream-kafka</module>
         <module>gateway</module>
+        <module>gateway-weight</module>
+        <module>gateway-service</module>
     </modules>
 
     <repositories>
