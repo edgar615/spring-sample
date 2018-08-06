@@ -12,6 +12,7 @@ spring:
         admin:
             client:
                 url: "http://localhost:8088"
+                auto-deregistration: true #平滑关闭才有用，直接kill不起作用
 #                username: user
 #                password: password
 #                instance:
