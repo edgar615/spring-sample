@@ -1,0 +1,3 @@
+com.github.edgar615.spring.factory.MyService=\
+com.github.edgar615.spring.factory.impl.MyServiceImpl1,\
+com.github.edgar615.spring.factory.impl.MyServiceImpl2
