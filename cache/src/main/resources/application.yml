@@ -6,6 +6,7 @@ spring:
     application:
         name: cache
     cache:
+#        type: caffeine #强制指定缓存类型，一般不使用
         cache-names: testCache, cache1, cache2
         caffeine:
             spec: maximumSize=500,expireAfterAccess=600s

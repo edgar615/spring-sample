@@ -1,0 +1,38 @@
+server:
+    port: 8888
+
+
+spring:
+    application:
+        name: cache
+    redis:
+        database: 1
+        host: test.ihorn.com.cn
+        password: 7CBF5FBEF855F16F
+        port: 32770
+        ssl : false
+        timeout: 3000
+        jedis:
+            pool:
+                max-active: 8
+                max-idle: 8
+                min-idle: 8
+                max-wait: -1ms #负数表示不限制
+    cache:
+        cache-names: redisCache
+        redis:
+            time-to-live: 10000
+            cache-null-values: true
+            use-key-prefix: true
+            key-prefix: "cache:"
+            spec:
+                cache1:
+                    time-to-live: 20000
+                    cache-null-values: true
+                    use-key-prefix: true
+                    key-prefix: "cache1:"
+                cache2:
+                    time-to-live: 30000
+                    cache-null-values: true
+                    use-key-prefix: true
+                    key-prefix: "cache2:"

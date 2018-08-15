@@ -38,6 +38,7 @@
         <module>gateway-service</module>
         <module>logging</module>
         <module>logstash</module>
+        <module>cache-redis</module>
     </modules>
 
     <repositories>
