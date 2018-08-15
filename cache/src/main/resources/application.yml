@@ -1,12 +1,11 @@
 server:
-  port: 8888
+    port: 8888
 
 
 spring:
-  application:
-    name: cache
-
-cache:
-    enabled: true
-    spec:
-        - name=testCache,type=caffeine,maximumSize=5000,expireAfterWrite=24h
+    application:
+        name: cache
+    cache:
+        cache-names: testCache, cache1, cache2
+        caffeine:
+            spec: maximumSize=500,expireAfterAccess=600s

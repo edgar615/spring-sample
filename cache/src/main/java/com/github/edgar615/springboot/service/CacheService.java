@@ -14,4 +14,16 @@ public interface CacheService {
   String method3(int i);
 
   String method4(int i);
+
+  String level1(int id);
+
+  void clearLevel1(int id);
+
+  String level2(int id);
+
+  void clearLevel2(int id);
+
+  String level(int id);
+
+  void clearLevel(int id);
 }
