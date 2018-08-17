@@ -7,9 +7,9 @@ spring:
         name: cache
     redis:
         database: 1
-        host: test.ihorn.com.cn
+        host: localhost
         password: 7CBF5FBEF855F16F
-        port: 32770
+        port: 6379
         ssl : false
         timeout: 3000
         jedis:
