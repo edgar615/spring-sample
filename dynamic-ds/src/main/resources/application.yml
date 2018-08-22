@@ -1,0 +1,69 @@
+server:
+    port: 9000
+    error:
+        whitelabel:
+            enabled: false
+
+spring:
+    application:
+        name: helloworld
+    jackson:
+        default-property-inclusion: non_null
+        #serialization-inclusion: non_null 升级后不起作用
+    mvc:
+        throw-exception-if-no-handler-found: true
+    resources:
+        add-mappings: true
+
+dynamic-datasource:
+    first:
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://test.ihorn.com.cn:3306/device
+          username : admin
+          password: csst
+          # hikari配置
+          type: com.zaxxer.hikari.HikariDataSource
+  #        maximumPoolSize: 5 #指定连接池最大的连接数，包括使用中的和空闲的连接.默认10
+          connectionTimeout: 60000 #连接的超时时间，毫秒
+          poolName: datasource #连接池名称
+  #        autoCommit: false #自动提交
+  #        minimumIdle: 0 #指定连接维护的最小空闲连接数，当使用HikariCP时指定.
+          dataSourceProperties: # hikari的属性
+              ## Only for mysql https://github.com/brettwooldridge/HikariCP/wiki/MySQL-Configuration
+                cachePrepStmts: true
+                prepStmtCacheSize: 250
+                prepStmtCacheSqlLimit: 2048
+                useServerPrepStmts: true
+                useLocalSessionState: true
+                useLocalTransactionState: true
+                rewriteBatchedStatements: true
+                cacheResultSetMetadata: true
+                cacheServerConfiguration: true
+                elideSetAutoCommits: true
+                maintainTimeStats: false
+
+    second:
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://test.ihorn.com.cn:3307/device?verifyServerCertificate=false&useSSL=true&requireSSL=true
+          username : device
+          password: fec40bf3aff7209a
+          # hikari配置
+          type: com.zaxxer.hikari.HikariDataSource
+  #        maximumPoolSize: 5 #指定连接池最大的连接数，包括使用中的和空闲的连接.默认10
+          connectionTimeout: 60000 #连接的超时时间，毫秒
+          poolName: read-datasource #连接池名称
+  #        autoCommit: false #自动提交
+  #        minimumIdle: 0 #指定连接维护的最小空闲连接数，当使用HikariCP时指定.
+          dataSourceProperties: # hikari的属性
+              ## Only for mysql https://github.com/brettwooldridge/HikariCP/wiki/MySQL-Configuration
+                cachePrepStmts: true
+                prepStmtCacheSize: 250
+                prepStmtCacheSqlLimit: 2048
+                useServerPrepStmts: true
+                useLocalSessionState: true
+                useLocalTransactionState: true
+                rewriteBatchedStatements: true
+                cacheResultSetMetadata: true
+                cacheServerConfiguration: true
+                elideSetAutoCommits: true
+                maintainTimeStats: false

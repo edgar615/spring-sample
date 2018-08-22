@@ -41,6 +41,7 @@
         <module>cache-redis</module>
         <module>factory</module>
         <module>test</module>
+        <module>dynamic-ds</module>
     </modules>
 
     <repositories>
