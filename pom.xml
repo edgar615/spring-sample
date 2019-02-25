@@ -19,7 +19,6 @@
         <module>spring-admin</module>
         <module>helloworld</module>
         <module>feign</module>
-        <module>consul</module>
         <module>health</module>
         <module>admin-client</module>
         <module>hystrix</module>
@@ -60,9 +59,9 @@
         <java.version>1.8</java.version>
         <java.encoding>UTF-8</java.encoding>
         <project.build.sourceEncoding>${java.encoding}</project.build.sourceEncoding>
-        
+
         <junit.version>4.12</junit.version>
-		<spring.cloud.version>Finchley.RELEASE</spring.cloud.version>
+		    <spring.cloud.version>Finchley.RELEASE</spring.cloud.version>
         <cloud.start.version>2.0.0.RELEASE</cloud.start.version>
         <!--Edgware.SR2 Finchley.M9-->
         <org.aspectj.version>1.7.2</org.aspectj.version>
