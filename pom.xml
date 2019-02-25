@@ -42,6 +42,8 @@
         <module>test</module>
         <module>dynamic-ds</module>
         <module>profile</module>
+        <module>banner</module>
+        <module>command-line</module>
     </modules>
 
     <repositories>
