@@ -41,6 +41,7 @@
         <module>factory</module>
         <module>test</module>
         <module>dynamic-ds</module>
+        <module>profile</module>
     </modules>
 
     <repositories>
