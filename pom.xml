@@ -44,6 +44,7 @@
         <module>profile</module>
         <module>banner</module>
         <module>command-line</module>
+        <module>random-configuration-value</module>
     </modules>
 
     <repositories>
