@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.0.RELEASE</version>
+        <version>2.3.4.RELEASE</version>
         <!--1.5.10.RELEASE  2.0.0.RELEASE-->
     </parent>
 
@@ -18,10 +18,8 @@
     <modules>
         <module>spring-admin</module>
         <module>helloworld</module>
-        <module>feign</module>
         <module>health</module>
         <module>admin-client</module>
-        <module>hystrix</module>
         <module>fileuploads</module>
         <module>cache</module>
         <module>enable</module>
@@ -32,9 +30,6 @@
         <module>zipkin-client2</module>
         <module>mail</module>
         <module>stream-kafka</module>
-        <module>gateway</module>
-        <module>gateway-weight</module>
-        <module>gateway-service</module>
         <module>logging</module>
         <module>logstash</module>
         <module>cache-redis</module>

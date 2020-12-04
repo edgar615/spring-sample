@@ -12,7 +12,7 @@ public class SomeBeanConfiguration {
   }
 
   @Bean
-  @ConditionalOnProperty(name = "aBean2.enabled", matchIfMissing = false, havingValue = "true")
+  @ConditionalOnProperty(name = "aBean2.enabled", matchIfMissing = true)
   public String aBean2() {
     return "aBean2";
   }

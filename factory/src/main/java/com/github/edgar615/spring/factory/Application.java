@@ -17,7 +17,7 @@ public class Application {
     List<MyService> classes = SpringFactoriesLoader.loadFactories(MyService.class, Application.class.getClassLoader());
     System.out.println(classes);
     ApplicationContext context = SpringApplication.run(Application.class, args);
-    System.out.println(context.getBean(MyService.class));
+//    System.out.println(context.getBean(MyService.class));
   }
 
 }
