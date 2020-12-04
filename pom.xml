@@ -60,7 +60,7 @@
         <java.encoding>UTF-8</java.encoding>
         <project.build.sourceEncoding>${java.encoding}</project.build.sourceEncoding>
 
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
 		    <spring.cloud.version>Finchley.RELEASE</spring.cloud.version>
         <cloud.start.version>2.0.0.RELEASE</cloud.start.version>
         <!--Edgware.SR2 Finchley.M9-->
