@@ -4,14 +4,18 @@ server:
 spring:
     application:
         name: logging
-
-logging:
-    level:
-        root: WARN
-        com:
-            github:
-                edgar615: INFO
-    file: logging.log
+management:
+    endpoints:
+        web:
+            exposure:
+                include: loggers
+#logging:
+#    level:
+#        root: WARN
+#        com:
+#            github:
+#                edgar615: INFO
+#    file: logging.log
 #    path: log # 日志文件为 spring.log,和logging.file不能同时使用，如若同时使用，则只有logging.file生效
 #    pattern:
 #        console: "%date %level %msg%n"

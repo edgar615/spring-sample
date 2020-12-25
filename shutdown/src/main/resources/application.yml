@@ -1,0 +1,14 @@
+server:
+  shutdown: graceful # 开启优雅停机，默认使用IMMEDIATE立即关机
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 30s # 设置缓冲区，最大等待时间，超时候无论线程任务是否执行完毕都会停机处理
+
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: shutdown

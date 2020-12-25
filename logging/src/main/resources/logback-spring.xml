@@ -8,9 +8,19 @@
 
     <!--Configure Logback for File-only Output-->
     <include resource="org/springframework/boot/logging/logback/defaults.xml" />
-    <property name="LOG_FILE" value="${LOG_FILE}"/>
-    <include resource="org/springframework/boot/logging/logback/file-appender.xml" />
+<!--    <property name="LOG_FILE" value="${LOG_FILE}"/>-->
+<!--    <include resource="org/springframework/boot/logging/logback/file-appender.xml" />-->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are by default assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36}  [${serviceName},%X{x-request-id}] %msg%n</pattern>
+        </encoder>
+    </appender>
+
     <root level="INFO">
-        <appender-ref ref="FILE" />
+        <appender-ref ref="STDOUT" />
     </root>
 </configuration>

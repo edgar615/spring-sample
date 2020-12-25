@@ -29,7 +29,6 @@
         <module>zipkin-client1</module>
         <module>zipkin-client2</module>
         <module>mail</module>
-        <module>stream-kafka</module>
         <module>logging</module>
         <module>logstash</module>
         <module>cache-redis</module>
@@ -41,6 +40,8 @@
         <module>command-line</module>
         <module>random-configuration-value</module>
       <module>argument-passing</module>
+        <module>spring-date</module>
+        <module>shutdown</module>
     </modules>
 
     <repositories>
